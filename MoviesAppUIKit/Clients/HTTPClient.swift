@@ -14,10 +14,10 @@ enum NetworkError: Error {
 
 class HTTPClient {
     
-    func fetchMovies(search: String) -> AnyPublisher<[Movie], Error> {
+    func fetchMovies(search: String, page: Int) -> AnyPublisher<[Movie], Error> {
         
         guard let encodedSearch = search.urlEncoded,
-              let url = URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&page=2&apiKey=564727fa")
+              let url = URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&page=\(page)&apiKey=564727fa")
         else {
             return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
         }

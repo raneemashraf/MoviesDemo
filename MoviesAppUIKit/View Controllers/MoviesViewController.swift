@@ -13,9 +13,9 @@ import Combine
 class MoviesViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var moviesTableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var moviesTableView: UITableView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     private var viewModel: MovieListViewModel!
@@ -28,28 +28,8 @@ class MoviesViewController: UIViewController {
         // Initialize view model
         viewModel = MovieListViewModel(httpClient: HTTPClient())
         
-        setupUI()
+        // setupUI()
         setupBindings()
-    }
-    
-    // MARK: - Setup Methods
-    private func setupUI() {
-        // Customize search bar
-        searchBar.searchBarStyle = .minimal
-        searchBar.barTintColor = .systemBlue
-        searchBar.searchTextField.backgroundColor = .white
-        searchBar.searchTextField.layer.cornerRadius = 10
-        searchBar.searchTextField.clipsToBounds = true
-        
-        // Customize table view
-        moviesTableView.backgroundColor = .systemGroupedBackground
-        moviesTableView.separatorStyle = .singleLine
-        moviesTableView.rowHeight = UITableView.automaticDimension
-        moviesTableView.estimatedRowHeight = 60
-        
-        // Customize activity indicator
-        activityIndicator.style = .large
-        activityIndicator.color = .systemBlue
     }
     
     private func setupBindings() {
@@ -97,6 +77,14 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Load next page when user scrolls near the bottom (within 3 rows)
+        let lastRowIndex = viewModel.movies.count - 1
+        if indexPath.row >= lastRowIndex - 2 {
+            viewModel.loadNextPage()
+        }
     }
 }
 
