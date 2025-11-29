@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nav-controller">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
@@ -8,6 +8,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="nav-scene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nav-controller" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nav-bar">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <color key="barTintColor" systemColor="systemIndigoColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="root-segue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nav-first-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-650" y="4"/>
+        </scene>
         <!--Movies View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,7 +46,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-view">
-                                <rect key="frame" x="0.0" y="118" width="393" height="80"/>
+                                <rect key="frame" x="0.0" y="172" width="393" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎬 Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="title-lbl">
                                         <rect key="frame" x="20" y="20" width="353" height="50"/>
@@ -29,7 +58,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="hdr-height"/>
                                     <constraint firstAttribute="bottom" secondItem="title-lbl" secondAttribute="bottom" constant="10" id="title-bottom"/>
@@ -38,7 +67,7 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" text="" placeholder="Search for movies..." translatesAutoresizingMaskIntoConstraints="NO" id="fHf-dD-8hE">
-                                <rect key="frame" x="16" y="210" width="361" height="64"/>
+                                <rect key="frame" x="16" y="264" width="361" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -67,7 +96,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eZB-aD-7hg">
-                                <rect key="frame" x="16" y="290" width="361" height="494"/>
+                                <rect key="frame" x="16" y="344" width="361" height="440"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <color key="separatorColor" systemColor="separatorColor"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
@@ -130,6 +159,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eZB-aD-7hg" secondAttribute="trailing" constant="16" id="table-trailing"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nav-item"/>
                     <connections>
                         <outlet property="activityIndicator" destination="JcB-F7-Kbm" id="Ojq-nW-KXJ"/>
                         <outlet property="moviesTableView" destination="eZB-aD-7hg" id="cYv-G2-kYT"/>
@@ -140,19 +170,280 @@
             </objects>
             <point key="canvasLocation" x="102" y="4"/>
         </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="detail-scene">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailViewController" id="detail-vc" customClass="MovieDetailViewController" customModule="MoviesAppUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="detail-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scroll-view">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="content-view">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="743.66666666666663"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="poster-img">
+                                                <rect key="frame" x="126.66666666666669" y="20" width="140" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="poster-height"/>
+                                                    <constraint firstAttribute="width" constant="140" id="poster-width"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="title-label">
+                                                <rect key="frame" x="20" y="236" width="353" height="33.666666666666686"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="info-stack">
+                                                <rect key="frame" x="20" y="285.66666666666669" width="353" height="20.333333333333314"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="2001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="year-label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="194" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sep1">
+                                                        <rect key="frame" x="202" y="0.0" width="7.6666666666666572" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="106 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="runtime-label">
+                                                        <rect key="frame" x="217.66666666666666" y="0.0" width="61.999999999999972" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sep2">
+                                                        <rect key="frame" x="287.66666666666669" y="0.0" width="7.6666666666666856" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PG-13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rating-label">
+                                                        <rect key="frame" x="303.33333333333331" y="0.0" width="49.666666666666686" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️ 6.8/10 (446,760 votes)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imdb-label">
+                                                <rect key="frame" x="20" y="322" width="353" height="23"/>
+                                                <fontDescription key="fontDescription" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemYellowColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="card-view1">
+                                                <rect key="frame" x="20" y="361" width="353" height="109"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre: Action, Crime, Thriller" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="genre-label">
+                                                        <rect key="frame" x="16" y="15.999999999999998" width="321" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Director: Rob Cohen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="director-label">
+                                                        <rect key="frame" x="16" y="44.333333333333314" width="321" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast: Vin Diesel, Paul Walker" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="actors-label">
+                                                        <rect key="frame" x="16" y="72.666666666666686" width="321" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="actors-label" secondAttribute="bottom" constant="16" id="actors-bottom"/>
+                                                    <constraint firstItem="actors-label" firstAttribute="leading" secondItem="card-view1" secondAttribute="leading" constant="16" id="actors-leading"/>
+                                                    <constraint firstItem="actors-label" firstAttribute="top" secondItem="director-label" secondAttribute="bottom" constant="8" id="actors-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="actors-label" secondAttribute="trailing" constant="16" id="actors-trailing"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="card1-min-height"/>
+                                                    <constraint firstItem="director-label" firstAttribute="leading" secondItem="card-view1" secondAttribute="leading" constant="16" id="director-leading"/>
+                                                    <constraint firstItem="director-label" firstAttribute="top" secondItem="genre-label" secondAttribute="bottom" constant="8" id="director-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="director-label" secondAttribute="trailing" constant="16" id="director-trailing"/>
+                                                    <constraint firstItem="genre-label" firstAttribute="leading" secondItem="card-view1" secondAttribute="leading" constant="16" id="genre-leading"/>
+                                                    <constraint firstItem="genre-label" firstAttribute="top" secondItem="card-view1" secondAttribute="top" constant="16" id="genre-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="genre-label" secondAttribute="trailing" constant="16" id="genre-trailing"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="card-view2">
+                                                <rect key="frame" x="20" y="486.00000000000006" width="353" height="151.66666666666669"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plot-header">
+                                                        <rect key="frame" x="16" y="16" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plot-text">
+                                                        <rect key="frame" x="16" y="48.000000000000007" width="321" height="87.666666666666686"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <string key="text">Los Angeles police officer Brian O'Conner must decide where his loyalty really lies when he becomes enamored with the street racing world he has been sent undercover to end it.</string>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="card2-min-height"/>
+                                                    <constraint firstAttribute="bottom" secondItem="plot-text" secondAttribute="bottom" constant="16" id="plot-bottom"/>
+                                                    <constraint firstItem="plot-header" firstAttribute="leading" secondItem="card-view2" secondAttribute="leading" constant="16" id="plot-hdr-leading"/>
+                                                    <constraint firstItem="plot-header" firstAttribute="top" secondItem="card-view2" secondAttribute="top" constant="16" id="plot-hdr-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="plot-header" secondAttribute="trailing" constant="16" id="plot-hdr-trailing"/>
+                                                    <constraint firstItem="plot-text" firstAttribute="leading" secondItem="card-view2" secondAttribute="leading" constant="16" id="plot-leading"/>
+                                                    <constraint firstItem="plot-text" firstAttribute="top" secondItem="plot-header" secondAttribute="bottom" constant="8" id="plot-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="plot-text" secondAttribute="trailing" constant="16" id="plot-trailing"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="card-view3">
+                                                <rect key="frame" x="20" y="653.66666666666663" width="353" height="70"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏆 11 wins &amp; 18 nominations total" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awards-label">
+                                                        <rect key="frame" x="16" y="16" width="321" height="38"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="awards-label" secondAttribute="bottom" constant="16" id="awards-bottom"/>
+                                                    <constraint firstItem="awards-label" firstAttribute="leading" secondItem="card-view3" secondAttribute="leading" constant="16" id="awards-leading"/>
+                                                    <constraint firstItem="awards-label" firstAttribute="top" secondItem="card-view3" secondAttribute="top" constant="16" id="awards-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="awards-label" secondAttribute="trailing" constant="16" id="awards-trailing"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="card3-min-height"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="card-view1" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="card1-leading"/>
+                                            <constraint firstItem="card-view1" firstAttribute="top" secondItem="imdb-label" secondAttribute="bottom" constant="16" id="card1-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="card-view1" secondAttribute="trailing" constant="20" id="card1-trailing"/>
+                                            <constraint firstItem="card-view2" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="card2-leading"/>
+                                            <constraint firstItem="card-view2" firstAttribute="top" secondItem="card-view1" secondAttribute="bottom" constant="16" id="card2-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="card-view2" secondAttribute="trailing" constant="20" id="card2-trailing"/>
+                                            <constraint firstItem="card-view3" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="card3-leading"/>
+                                            <constraint firstItem="card-view3" firstAttribute="top" secondItem="card-view2" secondAttribute="bottom" constant="16" id="card3-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="card-view3" secondAttribute="trailing" constant="20" id="card3-trailing"/>
+                                            <constraint firstAttribute="bottom" secondItem="card-view3" secondAttribute="bottom" constant="20" id="content-bottom"/>
+                                            <constraint firstItem="title-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="detail-title-leading"/>
+                                            <constraint firstItem="title-label" firstAttribute="top" secondItem="poster-img" secondAttribute="bottom" constant="16" id="detail-title-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="title-label" secondAttribute="trailing" constant="20" id="detail-title-trailing"/>
+                                            <constraint firstItem="imdb-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="imdb-leading"/>
+                                            <constraint firstItem="imdb-label" firstAttribute="top" secondItem="info-stack" secondAttribute="bottom" constant="16" id="imdb-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="imdb-label" secondAttribute="trailing" constant="20" id="imdb-trailing"/>
+                                            <constraint firstItem="info-stack" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="info-leading"/>
+                                            <constraint firstItem="info-stack" firstAttribute="top" secondItem="title-label" secondAttribute="bottom" constant="16" id="info-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="info-stack" secondAttribute="trailing" constant="20" id="info-trailing"/>
+                                            <constraint firstItem="poster-img" firstAttribute="centerX" secondItem="content-view" secondAttribute="centerX" id="poster-centerX"/>
+                                            <constraint firstItem="poster-img" firstAttribute="top" secondItem="content-view" secondAttribute="top" constant="20" id="poster-top"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="content-view" firstAttribute="bottom" secondItem="scroll-view" secondAttribute="bottom" id="content-bottom-scroll"/>
+                                    <constraint firstItem="content-view" firstAttribute="leading" secondItem="scroll-view" secondAttribute="leading" id="content-leading"/>
+                                    <constraint firstItem="content-view" firstAttribute="top" secondItem="scroll-view" secondAttribute="top" id="content-top"/>
+                                    <constraint firstItem="content-view" firstAttribute="trailing" secondItem="scroll-view" secondAttribute="trailing" id="content-trailing"/>
+                                    <constraint firstItem="content-view" firstAttribute="width" secondItem="scroll-view" secondAttribute="width" id="content-width"/>
+                                </constraints>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="detail-activity">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" systemColor="systemIndigoColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="detail-safe"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="detail-activity" firstAttribute="centerX" secondItem="detail-view" secondAttribute="centerX" id="activity-centerX"/>
+                            <constraint firstItem="detail-activity" firstAttribute="centerY" secondItem="detail-view" secondAttribute="centerY" id="activity-centerY"/>
+                            <constraint firstItem="scroll-view" firstAttribute="bottom" secondItem="detail-view" secondAttribute="bottom" id="scroll-bottom"/>
+                            <constraint firstItem="scroll-view" firstAttribute="leading" secondItem="detail-safe" secondAttribute="leading" id="scroll-leading"/>
+                            <constraint firstItem="scroll-view" firstAttribute="top" secondItem="detail-view" secondAttribute="top" id="scroll-top"/>
+                            <constraint firstItem="scroll-view" firstAttribute="trailing" secondItem="detail-safe" secondAttribute="trailing" id="scroll-trailing"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="detail-activity" id="activity-outlet"/>
+                        <outlet property="actorsLabel" destination="actors-label" id="actors-outlet"/>
+                        <outlet property="awardsLabel" destination="awards-label" id="awards-outlet"/>
+                        <outlet property="directorLabel" destination="director-label" id="director-outlet"/>
+                        <outlet property="genreLabel" destination="genre-label" id="genre-outlet"/>
+                        <outlet property="imdbRatingLabel" destination="imdb-label" id="imdb-outlet"/>
+                        <outlet property="plotTextView" destination="plot-text" id="plot-outlet"/>
+                        <outlet property="posterImageView" destination="poster-img" id="poster-outlet"/>
+                        <outlet property="ratingLabel" destination="rating-label" id="rating-outlet"/>
+                        <outlet property="runtimeLabel" destination="runtime-label" id="runtime-outlet"/>
+                        <outlet property="scrollView" destination="scroll-view" id="scroll-outlet"/>
+                        <outlet property="titleLabel" destination="title-label" id="title-outlet"/>
+                        <outlet property="yearLabel" destination="year-label" id="year-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="detail-first-responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850" y="4"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="separatorColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

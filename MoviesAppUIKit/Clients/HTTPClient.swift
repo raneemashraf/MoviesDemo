@@ -14,10 +14,13 @@ enum NetworkError: Error {
 
 class HTTPClient {
     
+    private let baseURL = "https://www.omdbapi.com"
+    private let apiKey = "8a7faae1"
+    
     func fetchMovies(search: String, page: Int) -> AnyPublisher<[Movie], Error> {
         
         guard let encodedSearch = search.urlEncoded,
-              let url = URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&page=\(page)&apiKey=564727fa")
+              let url = URL(string: "\(baseURL)/?s=\(encodedSearch)&page=\(page)&apiKey=\(apiKey)")
         else {
             return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
         }
@@ -30,6 +33,21 @@ class HTTPClient {
             .catch { error -> AnyPublisher<[Movie], Error> in
                 return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
             }
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchMovieDetails(title: String) -> AnyPublisher<MovieDetail, Error> {
+        
+        guard let encodedTitle = title.urlEncoded,
+              let url = URL(string: "\(baseURL)/?t=\(encodedTitle)&apiKey=\(apiKey)")
+        else {
+            return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: MovieDetail.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
